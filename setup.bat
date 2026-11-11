@@ -2,9 +2,15 @@
 setlocal
 cd /d "%~dp0"
 
+rem Prefer Python 3.12; newer versions may lack wheels for some dependencies.
 set "PY=python"
-where py >nul 2>nul
-if %errorlevel%==0 set "PY=py -3"
+py -3.12 --version >nul 2>nul
+if %errorlevel%==0 (
+  set "PY=py -3.12"
+) else (
+  py -3 --version >nul 2>nul
+  if not errorlevel 1 set "PY=py -3"
+)
 
 if not exist ".venv\Scripts\python.exe" (
   echo Creating virtual environment...
