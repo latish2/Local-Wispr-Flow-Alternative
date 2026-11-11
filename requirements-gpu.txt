@@ -1,0 +1,4 @@
+# CUDA 12 runtime libraries for faster-whisper / CTranslate2 on NVIDIA GPUs.
+# Installed into the venv so no system-wide CUDA toolkit is needed.
+nvidia-cublas-cu12
+nvidia-cudnn-cu12==9.*
